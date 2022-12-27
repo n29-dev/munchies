@@ -18,3 +18,11 @@
         font-family: var(--font-poppins), sans-serif;
     }
 }
+
+/* components */
+
+@layer components{
+    .heading{
+        @apply text-2xl mb-7;
+    }
+}

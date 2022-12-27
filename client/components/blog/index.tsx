@@ -32,9 +32,9 @@ const postsData: PostType[] = [
 
 const Blog: FC = () => {
     return (
-        <section className="pt-[100px]">
+        <section className="py-[100px]">
             <div className="container">
-                <h2 className="text-2xl mb-7">Our Blog</h2>
+                <h2 className="heading">Our Blog</h2>
                 <div className="grid grid-cols-4 gap-10">
                     {postsData.map((post, index) => {
                         if (index === 1) {

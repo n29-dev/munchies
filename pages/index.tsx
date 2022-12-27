@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "@components/layout";
 import Hero from "@components/hero";
 import Blog from "@components/blog";
+import Contact from "@components/contact";
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
             <Layout>
                 <Hero />
                 <Blog />
+                <Contact />
             </Layout>
         </>
     );
