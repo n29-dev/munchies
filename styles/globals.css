@@ -20,9 +20,33 @@
 }
 
 /* components */
-
-@layer components{
-    .heading{
+@layer components {
+    .heading {
         @apply text-2xl mb-7;
     }
+}
+
+/* custom styles */
+@keyframes sideIn {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+header.header-sticky {
+    height: 73px;
+}
+
+header.header-sticky > div {
+    background-color: #0c1712;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    animation: sideIn 300ms ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
