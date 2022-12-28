@@ -5,6 +5,10 @@ import Navbar from "./navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Modal from "@components/global/modal";
+import SearchBar from "./searchBar";
+import useDropdownToggle from "@hooks/useDropdown";
+import EmptyCart from "./emptyCart";
 
 export interface NavLinksType {
     label: string;
@@ -20,6 +24,7 @@ export const navLinks: NavLinksType[] = [
 ];
 
 const Header: FC = () => {
+    // header sticky
     const headerRef = useRef<HTMLHeadingElement | null>(null);
 
     const headerStickyHandler: EventListener = () => {
@@ -36,32 +41,64 @@ const Header: FC = () => {
         }
     });
 
+    // search bar modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // card dropdown
+    const [isCartDropdownOpen, toggle, cartDropdownRef] = useDropdownToggle({ outClickClose: true });
+
     return (
-        <header className="bg-darkGreen py-1" ref={headerRef}>
-            <div>
-                <div className="container flex justify-between items-center ">
-                    {/* logo */}
-                    <div>
-                        <Link href="#">
-                            <Image src={Logo} alt="logo" />
-                        </Link>
-                    </div>
-                    {/* navbar */}
-                    <div>
-                        <Navbar navLinks={navLinks} />
-                    </div>
-                    {/* buttons */}
-                    <div className="flex items-center gap-7">
-                        <button className="p-1" type="button">
-                            <FontAwesomeIcon className="w-[22px] text-white" icon={faSearch} />
-                        </button>
-                        <button className="p-1" type="button">
-                            <FontAwesomeIcon className="w-[22px] text-white" icon={faShoppingCart} />
-                        </button>
+        <>
+            <header className="bg-darkGreen py-1" ref={headerRef}>
+                <div>
+                    <div className="container flex justify-between items-center ">
+                        {/* logo */}
+                        <div>
+                            <Link href="#">
+                                <Image src={Logo} alt="logo" />
+                            </Link>
+                        </div>
+                        {/* navbar */}
+                        <div>
+                            <Navbar navLinks={navLinks} />
+                        </div>
+                        {/* buttons */}
+                        <div className="flex items-center gap-7">
+                            <button
+                                className="p-1"
+                                type="button"
+                                onClick={() => {
+                                    setIsModalOpen(true);
+                                }}
+                            >
+                                <FontAwesomeIcon className="w-[22px] text-white" icon={faSearch} />
+                            </button>
+                            {/* cart */}
+                            <div className="relative">
+                                <button className="p-1" type="button" onClick={toggle.toggle}>
+                                    <FontAwesomeIcon className="w-[22px] text-white" icon={faShoppingCart} />
+                                </button>
+                                <div
+                                    className={`dropdown min-w-[310px] border-[3px] border-yellow ${
+                                        isCartDropdownOpen && "active"
+                                    }`}
+                                    ref={cartDropdownRef}
+                                >
+                                    <EmptyCart />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
+            <Modal classes="min-w-[500px] py-3" isModalOpen={isModalOpen}>
+                <SearchBar
+                    closeModal={() => {
+                        setIsModalOpen(false);
+                    }}
+                />
+            </Modal>
+        </>
     );
 };
 

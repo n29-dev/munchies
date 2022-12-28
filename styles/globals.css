@@ -24,15 +24,26 @@
     .heading {
         @apply text-2xl mb-7;
     }
+
+    .dropdown {
+        @apply border divide-solid border-[#e9e9ef] rounded shadow-[0_0.25rem_0.75rem_rgba(18,38,63,.08)] absolute top-full right-0 min-w-[160px] invisible opacity-0 z-10 translate-y-2 transition-all duration-300 p-1 bg-white;
+    }
 }
 
 /* custom styles */
+
+.dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+}
+
 @keyframes sideIn {
     from {
-        transform: translateY(-20px);
+        transform: translateY(-100%);
     }
     to {
-        transform: translateY(0px);
+        transform: translateY(0);
     }
 }
 
@@ -47,6 +58,6 @@ header.header-sticky > div {
     left: 0;
     right: 0;
     top: 0;
-    animation: sideIn 300ms ease;
+    animation: sideIn 300ms linear;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
