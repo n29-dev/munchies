@@ -6,9 +6,10 @@ import { generateVariationKey } from "client/lib/utils";
 interface CartState {
     products: CartProductType[];
     quantities: Record<string, Record<string, any>>;
+    cartTotal: number;
 }
 
-const initialState: CartState = { products: [], quantities: {} };
+const initialState: CartState = { products: [], quantities: {}, cartTotal: 0 };
 
 const cartSlice = createSlice({
     name: "cartSlice",
@@ -36,12 +37,14 @@ const cartSlice = createSlice({
                     ) {
                         state.quantities[`${newProduct.id}`][keyString] = 1;
                         state.quantities[`${newProduct.id}`].total++;
+                        state.cartTotal += newProduct.addon.price;
                     }
                 } else {
                     newQuanObj[keyString] = 1;
                     newQuanObj.max_quantity = quantity_available;
                     newQuanObj.total = 1;
                     state.quantities[`${newProduct.id}`] = newQuanObj;
+                    state.cartTotal += newProduct.addon.price;
                 }
 
                 // if product found check if total is less than max_available
@@ -54,6 +57,7 @@ const cartSlice = createSlice({
                     productFound.quantity!++;
                     state.quantities[`${productFound.id}`][keyString]++;
                     state.quantities[`${productFound.id}`].total++;
+                    state.cartTotal += newProduct.addon.price;
                 }
             }
         },
@@ -66,11 +70,14 @@ const cartSlice = createSlice({
                 productFound.quantity!--;
                 state.quantities[`${productId}`][keyString]--;
                 state.quantities[`${productId}`].total--;
+                state.cartTotal -= productFound.addon.price;
             } else {
                 // else remove product and quntity info
+                if (productFound?.quantity! === 1) {
+                    state.cartTotal -= productFound?.addon.price!;
+                }
                 const products = state.products.filter((p) => !(p.id == productId && p.addon.name == addonName));
                 state.products = products;
-                console.log(products);
                 state.quantities[`${productId}`].total--;
                 delete state.quantities[`${productId}`][keyString];
             }

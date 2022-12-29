@@ -8,7 +8,7 @@ import Link from "next/link";
 import Modal from "@components/global/modal";
 import SearchBar from "./searchBar";
 import useDropdownToggle from "@hooks/useDropdown";
-import EmptyCart from "./emptyCart";
+import Cart from "./cart";
 
 export interface NavLinksType {
     label: string;
@@ -84,7 +84,7 @@ const Header: FC = () => {
                                     }`}
                                     ref={cartDropdownRef}
                                 >
-                                    <EmptyCart />
+                                    <Cart />
                                 </div>
                             </div>
                         </div>
