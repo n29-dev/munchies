@@ -3,7 +3,7 @@ import ContactForm from "./contactForm";
 import ContactThumb from "@public/images/contact-thumb.png";
 import Image from "next/image";
 
-const Contact: FC = () => {
+const ContactSection: FC = () => {
     return (
         <section className="bg-[#F7F8FA] py-[100px]">
             <div className="container flex justify-between">
@@ -25,4 +25,4 @@ const Contact: FC = () => {
     );
 };
 
-export default Contact;
+export default ContactSection;

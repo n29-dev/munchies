@@ -49,7 +49,7 @@ const Header: FC = () => {
 
     return (
         <>
-            <header className="bg-darkGreen py-1" ref={headerRef}>
+            <header className="bg-darkGreen py-1 z-20 relative" ref={headerRef}>
                 <div>
                     <div className="container flex justify-between items-center ">
                         {/* logo */}

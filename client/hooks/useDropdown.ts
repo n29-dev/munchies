@@ -11,7 +11,7 @@ type UseDropdownToggleReturn = [
     React.RefObject<HTMLDivElement> | undefined
 ];
 
-function useDropdownToggle(props: UseDropDownProps): UseDropdownToggleReturn {
+function useDropdown(props: UseDropDownProps): UseDropdownToggleReturn {
     const { init, outClickClose } = props;
     const [value, setValue] = useState(init || false);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -20,7 +20,7 @@ function useDropdownToggle(props: UseDropDownProps): UseDropdownToggleReturn {
         if (event) {
             event.preventDefault();
         }
-        setValue((v) => !v);
+        setValue((v: boolean) => !v);
     };
 
     const findClick = (event: MouseEvent) => {
@@ -69,4 +69,4 @@ function useDropdownToggle(props: UseDropDownProps): UseDropdownToggleReturn {
     ];
 }
 
-export default useDropdownToggle;
+export default useDropdown;

@@ -3,7 +3,7 @@ import HeroImage from "@public/images/hero-banner.png";
 import Image from "next/image";
 import SearhBar from "./searchBar";
 
-const Hero: FC = () => {
+const HeroSection: FC = () => {
     return (
         <section className="bg-darkGreen pt-[120px] pb-[160px]">
             <div className="container flex justify-between items-center">
@@ -22,4 +22,4 @@ const Hero: FC = () => {
     );
 };
 
-export default Hero;
+export default HeroSection;

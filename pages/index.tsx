@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Layout from "@components/layout";
-import Hero from "@components/hero";
-import Blog from "@components/blog";
-import Contact from "@components/contact";
+import HeroSection from "@components/hero";
+import BlogSection from "@components/blog";
+import ContactSection from "@components/contact";
+import ProductSection from "@components/products";
 
 export default function Home() {
     return (
@@ -11,9 +12,10 @@ export default function Home() {
                 <title>Munchies</title>
             </Head>
             <Layout>
-                <Hero />
-                <Blog />
-                <Contact />
+                <HeroSection />
+                <ProductSection />
+                <BlogSection />
+                <ContactSection />
             </Layout>
         </>
     );

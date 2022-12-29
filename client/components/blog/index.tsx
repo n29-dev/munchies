@@ -30,7 +30,7 @@ const postsData: PostType[] = [
     },
 ];
 
-const Blog: FC = () => {
+const BlogSection: FC = () => {
     return (
         <section className="py-[100px]">
             <div className="container">
@@ -48,4 +48,4 @@ const Blog: FC = () => {
     );
 };
 
-export default Blog;
+export default BlogSection;
