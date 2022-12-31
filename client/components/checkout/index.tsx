@@ -49,7 +49,7 @@ const Checkout: FC = () => {
         if (isError) {
             setError(true);
         } else {
-            router.replace("checkout/successful");
+            router.replace("checkout/success");
         }
     };
 
