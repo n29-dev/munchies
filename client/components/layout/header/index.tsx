@@ -29,9 +29,9 @@ const Header: FC = () => {
 
     const headerStickyHandler: EventListener = () => {
         if (window.scrollY > 250) {
-            headerRef.current!.classList.add("header-sticky");
+            headerRef.current?.classList.add("header-sticky");
         } else {
-            headerRef.current!.classList.remove("header-sticky");
+            headerRef.current?.classList.remove("header-sticky");
         }
     };
 
@@ -79,7 +79,7 @@ const Header: FC = () => {
                                     <FontAwesomeIcon className="w-[22px] text-white" icon={faShoppingCart} />
                                 </button>
                                 <div
-                                    className={`dropdown min-w-[310px] border-[3px] border-yellow ${
+                                    className={`dropdown min-w-[310px] border-[1px] border-yellow ${
                                         isCartDropdownOpen && "active"
                                     }`}
                                     ref={cartDropdownRef}

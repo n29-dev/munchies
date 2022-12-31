@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Input from "./input";
+import Input from "../global/input";
 import TextArea from "./textArea";
 
 const ContactForm: FC = () => {

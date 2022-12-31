@@ -5,7 +5,7 @@ import BlogSection from "@components/blog";
 import ContactSection from "@components/contact";
 import ProductSection from "@components/products";
 
-export default function Home() {
+export default function HomePage() {
     return (
         <>
             <Head>

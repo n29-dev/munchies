@@ -12,9 +12,14 @@ const productsApi = createApi({
                     return { url: "/products", method: "get" };
                 },
             }),
+            order: build.query<void, { data: object; headers: object }>({
+                query: ({ data, headers }) => {
+                    return { url: "/order", method: "post", data, params: { headers } };
+                },
+            }),
         };
     },
 });
 
 export default productsApi;
-export const { useProductsQuery } = productsApi;
+export const { useProductsQuery, useOrderQuery } = productsApi;

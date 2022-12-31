@@ -10,6 +10,7 @@ const ProductGallery: FC = () => {
                 data.map((productData) => {
                     return <Product productData={productData} key={productData.id} />;
                 })}
+            {isError && <h1>Something went wrong</h1>}
         </div>
     );
 };
