@@ -1,6 +1,26 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { ProductType } from "client/types/definition";
+import { ProductType, CartProductType } from "client/types/definition";
 import axiosBaseQuery from "client/lib/baseQuery";
+import { AxiosResponse } from "axios";
+
+interface OrderRequestType {
+    data: {
+        customer: {
+            name: string;
+            address: string;
+            number: string;
+        };
+        calculation: {
+            vat: string;
+            price: string;
+            total: string;
+        };
+        items: CartProductType[];
+    };
+    headers: {
+        ["x-access-user"]: string;
+    };
+}
 
 const productsApi = createApi({
     reducerPath: "productsApi",
@@ -12,9 +32,9 @@ const productsApi = createApi({
                     return { url: "/products", method: "get" };
                 },
             }),
-            order: build.query<void, { data: object; headers: object }>({
+            addOrder: build.mutation<AxiosResponse, OrderRequestType>({
                 query: ({ data, headers }) => {
-                    return { url: "/order", method: "post", data, params: { headers } };
+                    return { url: "/order", method: "post", data, headers};
                 },
             }),
         };
@@ -22,4 +42,4 @@ const productsApi = createApi({
 });
 
 export default productsApi;
-export const { useProductsQuery, useOrderQuery } = productsApi;
+export const { useProductsQuery, useAddOrderMutation } = productsApi;

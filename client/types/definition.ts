@@ -22,3 +22,5 @@ export interface CartProductType extends Omit<GenericProduct, "quantity_availabl
     quantity?: number;
     addon: Omit<Addon, "is_default" | "id">;
 }
+
+

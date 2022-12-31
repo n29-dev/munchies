@@ -16,7 +16,7 @@ export interface NavLinksType {
 }
 
 export const navLinks: NavLinksType[] = [
-    { label: "Home", link: "#" },
+    { label: "Home", link: "/" },
     { label: "About", link: "#" },
     { label: "Menu", link: "#" },
     { label: "Blog", link: "#" },
