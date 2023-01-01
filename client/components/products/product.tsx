@@ -41,7 +41,7 @@ const Product: FC<ProductPropsType> = ({ productData }: ProductPropsType) => {
     const dispatch = useDispatch();
 
     const { image, name, price, addons } = productData;
-    const [variationsDropdown, toggle] = useDropdownToggle({});
+    const [variationsDropdown, toggle, variationsDropdownRef] = useDropdownToggle({ outClickClose: true });
 
     // function add to cart
     const addToCart = (productAddon: Addon) => {
@@ -101,6 +101,7 @@ const Product: FC<ProductPropsType> = ({ productData }: ProductPropsType) => {
                                 className={`dropdown min-w-[200px] top-auto bottom-[calc(100%+5px)] p-2 pb-0 ${
                                     variationsDropdown && "active"
                                 }`}
+                                ref={variationsDropdownRef}
                             >
                                 {addons.map((variationData) => {
                                     return (

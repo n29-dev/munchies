@@ -26,13 +26,10 @@ function useDropdown(props: UseDropDownProps): UseDropdownToggleReturn {
     const findClick = (event: MouseEvent) => {
         event.preventDefault();
         const { current: currentElement } = dropdownRef;
+        const { x, y, width, height } = currentElement?.getBoundingClientRect()!;
+        const { clientX, clientY } = event;
 
-        if (
-            currentElement!.contains(event.target as Node) ||
-            currentElement!.isSameNode(event.target as Node) ||
-            currentElement!.previousElementSibling?.contains(event.target as Node) ||
-            currentElement!.previousElementSibling?.isSameNode(event.target as Node)
-        ) {
+        if (clientX >= x && clientX <= width + x && clientY >= y && y <= height + y) {
             return;
         }
         toggle();
