@@ -45,7 +45,7 @@ const Header: FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     // card dropdown
-    const [isCartDropdownOpen, toggle, cartDropdownRef] = useDropdownToggle({ outClickClose: true });
+    const [isCartDropdownOpen, toggle] = useDropdownToggle({});
 
     return (
         <>
@@ -82,7 +82,6 @@ const Header: FC = () => {
                                     className={`dropdown min-w-[310px] border-[1px] border-yellow ${
                                         isCartDropdownOpen && "active"
                                     }`}
-                                    ref={cartDropdownRef}
                                 >
                                     <Cart />
                                 </div>
