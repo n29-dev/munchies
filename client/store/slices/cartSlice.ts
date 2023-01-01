@@ -78,8 +78,11 @@ const cartSlice = createSlice({
                 }
                 const products = state.products.filter((p) => !(p.id == productId && p.addon.name == addonName));
                 state.products = products;
-                state.quantities[`${productId}`].total--;
-                delete state.quantities[`${productId}`][keyString];
+                
+                if (state.quantities[`${productId}`]) {
+                    state.quantities[`${productId}`].total--;
+                    delete state.quantities[`${productId}`][keyString];
+                }
             }
         },
     },
